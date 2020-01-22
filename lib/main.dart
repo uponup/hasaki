@@ -9,6 +9,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Startup Name Generator',
       home: new RandomWords(),
+      theme: new ThemeData(
+        primaryColor: Colors.white,
+      ),
     );
   }
 }
@@ -76,7 +79,7 @@ class RandomWordsState extends State<RandomWords> {
         title: new Text('Startup Name Generator'),
         actions: <Widget>[
           new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
-          new IconButton(icon: new Icon(Icons.feedback), onPressed: _pushSaved),
+          new IconButton(icon: new Icon(Icons.feedback), onPressed: _pushFeedback),
 
         ],
       ),
@@ -118,6 +121,16 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   void _pushFeedback() {
-    
+    Navigator.of(context).push(
+      new MaterialPageRoute(
+        builder: (context) {
+          return new Scaffold(
+            appBar: new AppBar(
+              title: new Text("用户反馈"),
+            )
+          );
+        }
+      )
+    );
   }
 }
